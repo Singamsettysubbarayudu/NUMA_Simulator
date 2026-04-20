@@ -23,7 +23,6 @@ def paging_ui():
     hits      = len(pages) - faults
     hit_ratio = round(hits / len(pages) * 100, 1)
 
-    # ── Summary metrics ──────────────────────────────────────────────────────
     st.markdown("### 📊 Simulation Summary")
     c1, c2, c3, c4, c5 = st.columns(5)
     c1.metric("Algorithm",   algo.split()[0])
@@ -34,7 +33,6 @@ def paging_ui():
 
     st.markdown("---")
 
-    # ── Tabs ─────────────────────────────────────────────────────────────────
     tab1, tab2, tab3 = st.tabs(
         ["📈 Fault Timeline", "🗂️ Execution Table", "🧠 Memory View"]
     )
