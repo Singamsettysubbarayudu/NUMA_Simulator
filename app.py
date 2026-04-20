@@ -228,13 +228,13 @@ st.markdown("""
         font-weight: 800;
         color: #7FD99A;
         letter-spacing: -0.02em;
-    '>Mem</span><span style='
+    '>Me</span><span style='
         font-family: Syne, sans-serif;
         font-size: 36px;
         font-weight: 800;
         color: #F5C542;
         letter-spacing: -0.02em;
-    '>Sim</span>
+    '>Mora</span>
     <span style='
         font-family: JetBrains Mono, monospace;
         font-size: 13px;
