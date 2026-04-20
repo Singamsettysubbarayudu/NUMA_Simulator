@@ -4,7 +4,7 @@ from paging import paging_ui
 from segmentation import segmentation_ui
 from virtual_memory import vm_ui
 
-# ── Page config ────────────────────────────────────────────────────────────────
+
 st.set_page_config(
     page_title="Memora — Memory Management Visualizer",
     page_icon="🧠",
@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Global CSS — Jade & Amber theme ───────────────────────────────────────────
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;800&display=swap');
@@ -131,13 +131,13 @@ div[data-testid="stSlider"] div[role="slider"] {
 </style>
 """, unsafe_allow_html=True)
 
-# ── Session defaults ───────────────────────────────────────────────────────────
+
 if "pages" not in st.session_state:
     st.session_state["pages"] = "7 0 1 2 0 3 0 4 2 3 0 3 2"
 if "frames" not in st.session_state:
     st.session_state["frames"] = 4
 
-# ── Sidebar ────────────────────────────────────────────────────────────────────
+
 st.sidebar.markdown(
     "<h2 style='font-family:Syne,sans-serif;color:#7FD99A;"
     "letter-spacing:0.05em;margin-bottom:4px;'>⚙️ Configuration</h2>",
@@ -194,7 +194,7 @@ module = st.sidebar.selectbox(
     help="Choose the memory management module to simulate"
 )
 
-# ── Reference string preview ───────────────────────────────────────────────────
+
 st.sidebar.markdown("#### 📝 Current Reference String")
 pages_preview = st.session_state["pages"].split()
 badges = " ".join(
@@ -215,7 +215,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
-# ── Main header ────────────────────────────────────────────────────────────────
+
 st.markdown("""
 <div style='
     padding: 32px 0 20px 0;
@@ -245,7 +245,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Module routing ─────────────────────────────────────────────────────────────
+
 if module == "Paging":
     paging_ui()
 elif module == "Virtual Memory":
@@ -253,7 +253,7 @@ elif module == "Virtual Memory":
 else:
     segmentation_ui()
 
-# ── Footer ─────────────────────────────────────────────────────────────────────
+
 st.markdown("""
 <div style='
     margin-top: 60px;
