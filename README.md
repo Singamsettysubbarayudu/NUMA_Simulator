@@ -1,34 +1,48 @@
-# NUMA Memory Management Simulator
+MeMora — Memory Management Visualizer
+A web-based simulator that shows how operating systems manage memory using paging, segmentation, virtual memory, and page replacement algorithms (FIFO, LRU & OPT).
+🔗 Live Demo: https://numa-simulatorpy-i5bh3saktfrqyd49mewxru.streamlit.app/
 
-**Live Demo:** https://numa-simulatorpy-i5bh3saktfrqyd49mewxru.streamlit.app/
+What is this?
+MeMora helps you understand how an operating system handles memory. You give it a reference string and a frame count, and it shows you — step by step — what happens when pages are loaded, replaced, or hit in memory. No more tracing algorithms by hand.
 
-## What is this?
+Features
 
-A web-based simulator that shows how operating systems manage memory using paging, virtual memory, and page replacement algorithms (FIFO & LRU).
+Choose between FIFO, LRU, and OPT (Optimal) page replacement algorithms
+Enter your own page reference strings
+Set memory frame count from the sidebar
+See memory frames, page tables, hit/fault rates visually
+Step through each memory access one at a time
+Compare all three algorithms side by side on the same input
+Translate logical segment,offset addresses to physical addresses (Segmentation module)
+Generate a random reference string with one click
 
-## Features
 
-- Choose memory size and page size
-- Enter custom page reference strings
-- Switch between FIFO and LRU algorithms
-- See memory frames, page tables, and fault rates visually
-- Step through each memory access
+How to Use
 
-## How to use
+Enter a reference string in the sidebar (example: 7 0 1 2 0 3 0 4)
+Set the number of frames
+Click Apply
+Select a module — Paging, Virtual Memory, or Segmentation
+Browse the tabs to explore fault timelines, memory views, and comparison tables
 
-1. Set memory size and page size in the sidebar
-2. Enter page numbers (example: 7,0,1,2,0,3)
-3. Click Run Simulation
-4. Check the tabs for different views
 
-## Tech stack
+Tech Stack
 
-- Python + Streamlit
-- Matplotlib for visualizations
-- Pandas for data tables
+Python + Streamlit
+Plotly for interactive charts
+Pandas for data tables
 
-## Run locally
 
-```bash
-pip install streamlit pandas matplotlib numpy
-streamlit run Numa-Simulator.py
+Run Locally
+bashpip install streamlit plotly pandas
+streamlit run app.py
+
+Project Structure
+MeMora/
+├── app.py              # Main entry point
+├── algorithms.py       # FIFO, LRU, OPT logic
+├── paging.py           # Paging module
+├── virtual_memory.py   # Virtual memory analysis
+├── segmentation.py     # Segmentation address translation
+├── visualization.py    # All charts and visual components
+└── utils.py            # Input parsing and helpers
