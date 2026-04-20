@@ -73,7 +73,7 @@ def vm_ui():
     with tab3:
         st.markdown("#### How Frame Count Affects Page Faults")
 
-        # Let user control the max range directly
+
         max_possible = len(pages)
         max_frames_to_test = st.slider(
             "Show faults up to how many frames?",
