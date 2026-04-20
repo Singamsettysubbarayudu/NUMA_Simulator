@@ -37,7 +37,6 @@ def lru_steps(pages, capacity):
             if len(memory) < capacity:
                 memory.append(page)
             else:
-                # Evict page whose last use was furthest in the past
                 lru_page = min(
                     memory,
                     key=lambda p: max(j for j in range(i) if pages[j] == p)
@@ -45,7 +44,6 @@ def lru_steps(pages, capacity):
                 memory.remove(lru_page)
                 memory.append(page)
         else:
-            # Update recency: move to end
             memory.remove(page)
             memory.append(page)
 
