@@ -2,14 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
-# ── Theme palette ──────────────────────────────────────────────────────────────
+
 THEME = {
     "bg":        "#0D0F0E",
     "surface":   "#141714",
     "border":    "#2A3B2D",
-    "primary":   "#7FD99A",   # jade green
-    "accent":    "#F5C542",   # amber gold
-    "danger":    "#E05C5C",   # soft red
+    "primary":   "#7FD99A",   
+    "accent":    "#F5C542",  
+    "danger":    "#E05C5C",   
     "text":      "#D4E8D8",
     "subtext":   "#6B8F71",
     "plotly_template": "plotly_dark",
@@ -27,7 +27,7 @@ PLOTLY_LAYOUT = dict(
 )
 
 
-# ── Faults over time ───────────────────────────────────────────────────────────
+
 def faults_graph(steps):
     faults  = [1 if s[2] == "Fault" else 0 for s in steps]
     pages   = [s[0] for s in steps]
@@ -57,7 +57,6 @@ def faults_graph(steps):
     st.plotly_chart(fig, use_container_width=True)
 
 
-# ── Memory block grid ──────────────────────────────────────────────────────────
 def memory_blocks(memory, capacity):
     st.markdown("<div style='margin-top:16px'></div>", unsafe_allow_html=True)
     cols_per_row = 8
@@ -95,7 +94,7 @@ def memory_blocks(memory, capacity):
     st.markdown("<div style='margin-bottom:24px'></div>", unsafe_allow_html=True)
 
 
-# ── Execution table ────────────────────────────────────────────────────────────
+
 def execution_table(steps):
     data = []
     for i, (page, frames, status) in enumerate(steps):
@@ -109,7 +108,7 @@ def execution_table(steps):
     st.dataframe(df, use_container_width=True, height=320)
 
 
-# ── Frame detail table ─────────────────────────────────────────────────────────
+
 def frame_details(memory, capacity):
     st.markdown("<div style='margin-top:20px'></div>", unsafe_allow_html=True)
     data = []
@@ -122,7 +121,7 @@ def frame_details(memory, capacity):
     st.table(df)
 
 
-# ── Hit / Fault pie ────────────────────────────────────────────────────────────
+
 def hit_fault_pie(faults, total):
     hits = total - faults
     fig = go.Figure(data=[go.Pie(
@@ -136,7 +135,7 @@ def hit_fault_pie(faults, total):
     st.plotly_chart(fig, use_container_width=True)
 
 
-# ── Faults vs Frames line chart ────────────────────────────────────────────────
+
 def faults_vs_frames(pages, algo_func, max_frames, selected_frames=None):
     results = []
     for f in range(1, max_frames + 1):
@@ -145,8 +144,7 @@ def faults_vs_frames(pages, algo_func, max_frames, selected_frames=None):
 
     df = pd.DataFrame({"Frames": list(range(1, max_frames + 1)), "Faults": results})
 
-    # Use selected_frames (from session state) for the star marker
-    # Clamp to valid range in case selected_frames > max_frames
+
     current_f = min(selected_frames, max_frames) if selected_frames else max_frames
 
     fig = go.Figure()
@@ -156,7 +154,6 @@ def faults_vs_frames(pages, algo_func, max_frames, selected_frames=None):
         line=dict(color=THEME["accent"], width=2.5),
         marker=dict(size=7, color=THEME["accent"]),
     ))
-    # Star on the ACTUAL selected frame count
     fig.add_trace(go.Scatter(
         x=[current_f], y=[results[current_f - 1]],
         mode="markers", name=f"Selected ({current_f} frames)",
@@ -170,7 +167,6 @@ def faults_vs_frames(pages, algo_func, max_frames, selected_frames=None):
     st.plotly_chart(fig, use_container_width=True)
 
 
-# ── Step-by-step memory state (slider-driven) ──────────────────────────────────
 def step_memory_view(steps, capacity):
     if not steps:
         return
