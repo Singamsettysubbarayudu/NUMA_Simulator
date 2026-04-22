@@ -2,7 +2,7 @@
 
 A web-based simulator that shows how operating systems manage memory using paging, segmentation, virtual memory, and page replacement algorithms (FIFO, LRU & OPT).
 
-🔗 **Live Demo:** [Click Here](https://memoravisualizer01-kknqy6kiqktbkbhp9ynqpn.streamlit.app/)
+🔗 **Live Demo:** [Click Here](https://memoravisualizer01-exrhopjlcsfprqizeapptv.streamlit.app/)
 
 ---
 
